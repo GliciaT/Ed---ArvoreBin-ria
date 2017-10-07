@@ -35,6 +35,9 @@ public class TesteArvore {
         arvore.remove("Eduardo");
         System.out.println("----REMOVIDO----");
         arvore.exploreTree(TADTree.POST_ORDER_EXPLORE);
+        
+        //teste printarArvore
+        arvore.printTree();
 
     }
 

@@ -1,5 +1,17 @@
 package Principal;
 
+import Auxiliar.NoDuplo;
+import Auxiliar.NoSimples;
+import Auxiliar.PilhaComArray;
+import Auxiliar.PilhaDinamica;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static javafx.scene.input.KeyCode.N;
+
 public class BinarySortedTree<T> implements TADTree<Comparable> {
 
     private BinarySortedNode<Comparable> raiz;
@@ -231,7 +243,43 @@ public class BinarySortedTree<T> implements TADTree<Comparable> {
     @Override
     public void printTree() {
         // TODO Imprimir a arvore na forma como desenhamos no quadro
+        PilhaComArray pilhaPrincipal = new PilhaComArray();
+        pilhaPrincipal.push(raiz);
+        int folhaVazia = 32;
+        boolean isRowEmpty = false;
+        System.out.println("----------------------------- Começo da Árvore -----------------------------");
+        while (isRowEmpty == false) {
 
+            PilhaComArray pilhaSecundaria = new PilhaComArray();
+            isRowEmpty = true;
+            for (int j = 0; j < folhaVazia; j++) {
+                System.out.print(' ');
+            }
+            while (pilhaPrincipal.isEmpty() == false) {
+                BinarySortedNode<Comparable> temp = (BinarySortedNode<Comparable>) pilhaPrincipal.pop();
+                if (temp != null) {
+                    System.out.print(temp.getElemento());
+                    pilhaSecundaria.push(temp.getLeft());
+                    pilhaSecundaria.push(temp.getRight());
+                    if (temp.getLeft() != null || temp.getRight() != null) {
+                        isRowEmpty = false;
+                    }
+                } else {
+                    System.out.print("--");
+                    pilhaSecundaria.push(null);
+                    pilhaSecundaria.push(null);
+                }
+                for (int j = 0; j < folhaVazia * 2 + 3; j++) {
+                    System.out.print(' ');
+                }
+            }
+            System.out.println();
+            folhaVazia /= 2;
+            while (pilhaSecundaria.isEmpty() == false) {
+                pilhaPrincipal.push(pilhaSecundaria.pop());
+            }
+        }
+        System.out.println("------------------------------- FIM DA ARVORE -------------------------------");
     }
 
 }
