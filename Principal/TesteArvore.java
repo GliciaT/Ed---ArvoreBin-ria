@@ -9,10 +9,8 @@ public class TesteArvore {
         arvore.add("Bruno");
         arvore.add("Arthur");
         arvore.add("Lucas");
-        arvore.add("Gabriel");
         arvore.add("Allan");
         arvore.add("Pedro");
-        arvore.add("Gustavo");
         arvore.add("Theusma");
 
         System.out.println(arvore.contains("Arthur"));

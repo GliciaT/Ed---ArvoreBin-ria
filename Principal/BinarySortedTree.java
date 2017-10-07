@@ -243,14 +243,14 @@ public class BinarySortedTree<T> implements TADTree<Comparable> {
     @Override
     public void printTree() {
         // TODO Imprimir a arvore na forma como desenhamos no quadro
-        PilhaComArray pilhaPrincipal = new PilhaComArray();
+        PilhaDinamica pilhaPrincipal = new PilhaDinamica();
         pilhaPrincipal.push(raiz);
         int folhaVazia = 32;
         boolean isRowEmpty = false;
         System.out.println("----------------------------- Começo da Árvore -----------------------------");
         while (isRowEmpty == false) {
 
-            PilhaComArray pilhaSecundaria = new PilhaComArray();
+            PilhaDinamica pilhaSecundaria = new PilhaDinamica();
             isRowEmpty = true;
             for (int j = 0; j < folhaVazia; j++) {
                 System.out.print(' ');
@@ -265,11 +265,11 @@ public class BinarySortedTree<T> implements TADTree<Comparable> {
                         isRowEmpty = false;
                     }
                 } else {
-                    System.out.print("--");
+                    System.out.print("-");
                     pilhaSecundaria.push(null);
                     pilhaSecundaria.push(null);
                 }
-                for (int j = 0; j < folhaVazia * 2 + 3; j++) {
+                for (int j = 0; j < folhaVazia * 2 - 3; j++) {
                     System.out.print(' ');
                 }
             }
